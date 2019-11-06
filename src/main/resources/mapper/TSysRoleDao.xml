@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.securitymybatis.dao.TSysRoleDao">
+
+    <resultMap type="com.springboot.securitymybatis.entity.TSysRole" id="TSysRoleMap">
+        <result property="roleId" column="role_id" jdbcType="INTEGER"/>
+               <result property="name" column="name" jdbcType="VARCHAR"/>
+               <result property="nameText" column="name_text" jdbcType="VARCHAR"/>
+           </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="TSysRoleMap">
+        select
+          role_id, name, name_text
+        from test_security.t_sys_role
+        where role_id = #{roleId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="TSysRoleMap">
+        select
+          role_id, name, name_text
+        from test_security.t_sys_role
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="TSysRoleMap">
+        select
+          role_id, name, name_text
+        from test_security.t_sys_role
+        <where>
+            <if test="roleId != null">
+                and role_id = #{roleId}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="nameText != null and nameText != ''">
+                and name_text = #{nameText}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="roleId" useGeneratedKeys="true">
+        insert into test_security.t_sys_role(name, name_text)
+        values (#{name}, #{nameText})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update test_security.t_sys_role
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="nameText != null and nameText != ''">
+                name_text = #{nameText},
+            </if>
+        </set>
+        where role_id = #{roleId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from test_security.t_sys_role where role_id = #{roleId}
+    </delete>
+
+</mapper>
