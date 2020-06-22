@@ -4,14 +4,14 @@
 
     <resultMap type="com.springboot.securitymybatis.entity.TSysRole" id="TSysRoleMap">
         <result property="roleId" column="role_id" jdbcType="INTEGER"/>
-               <result property="name" column="name" jdbcType="VARCHAR"/>
-               <result property="nameText" column="name_text" jdbcType="VARCHAR"/>
-           </resultMap>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="nameText" column="name_text" jdbcType="VARCHAR"/>
+    </resultMap>
 
     <!--查询单个-->
     <select id="queryById" resultMap="TSysRoleMap">
         select
-          role_id, name, name_text
+        role_id, name, name_text
         from test_security.t_sys_role
         where role_id = #{roleId}
     </select>
@@ -19,7 +19,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="TSysRoleMap">
         select
-          role_id, name, name_text
+        role_id, name, name_text
         from test_security.t_sys_role
         limit #{offset}, #{limit}
     </select>
@@ -27,7 +27,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="TSysRoleMap">
         select
-          role_id, name, name_text
+        role_id, name, name_text
         from test_security.t_sys_role
         <where>
             <if test="roleId != null">

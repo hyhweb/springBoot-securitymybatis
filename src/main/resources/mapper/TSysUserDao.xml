@@ -4,16 +4,16 @@
 
     <resultMap type="com.springboot.securitymybatis.entity.TSysUser" id="TSysUserMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
-               <result property="username" column="username" jdbcType="VARCHAR"/>
-               <result property="password" column="password" jdbcType="VARCHAR"/>
-               <result property="enabled" column="enabled" jdbcType="BOOLEAN"/>
-               <result property="locked" column="locked" jdbcType="BOOLEAN"/>
-           </resultMap>
+        <result property="username" column="username" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="enabled" column="enabled" jdbcType="BOOLEAN"/>
+        <result property="locked" column="locked" jdbcType="BOOLEAN"/>
+    </resultMap>
 
     <!--查询单个-->
     <select id="queryByUserName" resultType="com.springboot.securitymybatis.entity.TSysUser">
         select
-          id, username, password, enabled, locked
+        id, username, password, enabled, locked
         from test_security.t_sys_user
         where username = #{username}
     </select>
@@ -25,7 +25,7 @@
     <!--查询单个-->
     <select id="queryById" resultMap="TSysUserMap">
         select
-          id, username, password, enabled, locked
+        id, username, password, enabled, locked
         from test_security.t_sys_user
         where id = #{id}
     </select>
@@ -33,7 +33,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="TSysUserMap">
         select
-          id, username, password, enabled, locked
+        id, username, password, enabled, locked
         from test_security.t_sys_user
         limit #{offset}, #{limit}
     </select>
@@ -41,7 +41,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="TSysUserMap">
         select
-          id, username, password, enabled, locked
+        id, username, password, enabled, locked
         from test_security.t_sys_user
         <where>
             <if test="id != null">

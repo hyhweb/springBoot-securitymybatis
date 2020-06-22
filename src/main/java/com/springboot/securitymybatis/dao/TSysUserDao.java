@@ -3,6 +3,7 @@ package com.springboot.securitymybatis.dao;
 import com.springboot.securitymybatis.entity.TSysRole;
 import com.springboot.securitymybatis.entity.TSysUser;
 import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 /**
@@ -24,11 +25,12 @@ public interface TSysUserDao {
     TSysUser queryByUserName(String username);
 
     List<TSysRole> getUserRolesByUid(Long id);
+
     /**
      * 查询指定行数据
      *
      * @param offset 查询起始位置
-     * @param limit 查询条数
+     * @param limit  查询条数
      * @return 对象列表
      */
     List<TSysUser> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);

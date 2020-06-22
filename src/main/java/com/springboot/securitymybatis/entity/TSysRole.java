@@ -10,11 +10,11 @@ import java.io.Serializable;
  */
 public class TSysRole implements Serializable {
     private static final long serialVersionUID = -23655916518367324L;
-    
+
     private Long roleId;
-    
+
     private String name;
-    
+
     private String nameText;
 
 
